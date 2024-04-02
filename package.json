@@ -14,7 +14,9 @@
     "pretty": "prettier --check src",
     "lint": "yarn pretty && eslint --max-warnings 0 --ext ts,tsx,json src"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@stellar/stellar-sdk": "^11.3.0"
+  },
   "devDependencies": {
     "@types/node": "16.11.17",
     "@typescript-eslint/eslint-plugin": "4.15.2",
