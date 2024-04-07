@@ -15,10 +15,10 @@
     "lint": "yarn pretty && eslint --max-warnings 0 --ext ts,tsx,json src"
   },
   "dependencies": {
-    "@stellar/stellar-sdk": "^11.3.0"
+    "@stellar/stellar-sdk": "^11.3.0",
+    "clipboard": "^2.0.11"
   },
   "devDependencies": {
-    "prettier": "^3.2.5",
     "@types/node": "16.11.17",
     "@typescript-eslint/eslint-plugin": "4.15.2",
     "@typescript-eslint/parser": "4.15.2",
@@ -29,6 +29,7 @@
     "eslint-plugin-prefer-arrow": "1.2.3",
     "nodemon": "2.0.15",
     "npm-run-all": "4.1.5",
+    "prettier": "^3.2.5",
     "ts-node": "10.4.0",
     "tsconfig-paths": "3.12.0",
     "typescript": "4.5.4",
