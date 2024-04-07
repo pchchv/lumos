@@ -106,6 +106,37 @@ function generateInUiThread(suffix: string) {
     `Took ${(end - st) / Number((1000.0).toFixed(2))} sec to compute`;
 }
 
+function generateInWorkerThread(suffix: string) {
+  try {
+    const worker = new Worker("./worker.js");
+
+    document.getElementById("generatebutton")!.setAttribute("disabled", "true");
+    document.getElementById("progressbar")!.style.display = "block";
+
+    worker.onmessage = function (e) {
+      const pr = document.getElementById("privateKey") as HTMLInputElement;
+      const pp = document.getElementById("publicKey") as HTMLInputElement;
+
+      pr.value = e.data[0];
+      pp.value = e.data[1];
+
+      const time = e.data[2];
+
+      document.getElementById("generatebutton")!.removeAttribute("disabled");
+      document.getElementById("progressbar")!.style.display = "none";
+
+      document.getElementById("timebadge")!.textContent =
+        `Took ${(time / 1000.0).toFixed(2)} sec to compute`;
+
+      worker.terminate();
+    };
+    worker.postMessage(suffix);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
 (() => {
   "use strict";
   if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
