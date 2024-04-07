@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
     btn.addEventListener("blur", clearTooltip);
   });
 
-  const clipboard = new ClipboardJS('.btn.btn-outline-secondary');
+  const clipboard = new ClipboardJS(".btn.btn-outline-secondary");
   clipboard.on("success", function (e) {
     e.clearSelection();
     showTooltip(e.trigger, "Copied!");
@@ -67,8 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (this.value.length === 4) {
           suffixBadge.classList.remove("badge-danger");
           suffixBadge.classList.add("badge-warning");
-          suffixBadge.textContent =
-            "Will take 30-120 min to compute addresses";
+          suffixBadge.textContent = "Will take 30-120 min to compute addresses";
         } else {
           suffixBadge.classList.remove("badge-warning");
           suffixBadge.classList.add("badge-danger");
