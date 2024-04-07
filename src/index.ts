@@ -1,4 +1,4 @@
-function showTooltip(elem: HTMLElement, msg: string) {
+function showTooltip(elem: Element, msg: string) {
   elem.setAttribute("aria-label", msg);
   elem.setAttribute(
     "class",
@@ -6,7 +6,7 @@ function showTooltip(elem: HTMLElement, msg: string) {
   );
 }
 
-function clearTooltip(e: MouseEvent) {
+function clearTooltip(e: Event) {
   (e.currentTarget as HTMLElement).setAttribute(
     "class",
     "btn btn-outline-secondary",
