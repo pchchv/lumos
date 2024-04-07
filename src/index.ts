@@ -105,3 +105,14 @@ function generateInUiThread(suffix: string) {
   document.getElementById("timebadge")!.textContent =
     `Took ${(end - st) / Number((1000.0).toFixed(2))} sec to compute`;
 }
+
+(() => {
+  "use strict";
+  if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+    const msViewportStyle = document.createElement("style");
+    msViewportStyle.appendChild(
+      document.createTextNode("@-ms-viewport{width:auto!important}"),
+    );
+    document.querySelector("head")!.appendChild(msViewportStyle);
+  }
+})();
