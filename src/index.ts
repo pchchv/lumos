@@ -1,3 +1,4 @@
+import * as StellarSdk from "@stellar/stellar-sdk";
 import ClipboardJS from "clipboard";
 
 function showTooltip(elem: Element, msg: string) {
@@ -84,3 +85,23 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+function generateInUiThread(suffix: string) {
+  const pr = document.getElementById("privateKey") as HTMLInputElement;
+  const pp = document.getElementById("publicKey") as HTMLInputElement;
+
+  const st = new Date().getTime();
+  let pair = StellarSdk.Keypair.random();
+  while (true) {
+    if (pair.publicKey().endsWith(suffix)) {
+      break;
+    }
+    pair = StellarSdk.Keypair.random();
+  }
+  const end = new Date().getTime();
+
+  pr.value = pair.secret();
+  pp.value = pair.publicKey();
+
+  document.getElementById("timebadge")!.textContent =
+    `Took ${(end - st) / Number((1000.0).toFixed(2))} sec to compute`;
+}
