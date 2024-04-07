@@ -137,6 +137,17 @@ function generateInWorkerThread(suffix: string) {
   }
 }
 
+function generate() {
+  const suffix = (document.getElementById("suffix") as HTMLInputElement).value;
+  if (window.Worker) {
+    if (!generateInWorkerThread(suffix)) {
+      generateInUiThread(suffix);
+    }
+  } else {
+    generateInUiThread(suffix);
+  }
+}
+
 (() => {
   "use strict";
   if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
